@@ -22,6 +22,17 @@ def btnClick(button):
     else:
         messagebox.showerror("TicTacToe", "Someone already clicked here!")
 
+def disButtons():
+    btn1.config(state=DISABLED)
+    btn2.config(state=DISABLED)
+    btn3.config(state=DISABLED)
+    btn4.config(state=DISABLED)
+    btn5.config(state=DISABLED)
+    btn6.config(state=DISABLED)
+    btn7.config(state=DISABLED)
+    btn8.config(state=DISABLED)
+    btn9.config(state=DISABLED)
+
 def checkWinner():
     global winner
     if (btn1["text"]=="X" and btn2["text"]=="X" and btn3["text"]=="X" 
@@ -33,6 +44,7 @@ def checkWinner():
     or btn1["text"]=="X" and btn5["text"]=="X" and btn9["text"]=="X"
     or btn3["text"]=="X" and btn5["text"]=="X" and btn7["text"]=="X"):
         winner=True
+        disButtons()
         messagebox.showinfo("TicTacToe", "X is winner!")
     elif (btn1["text"]=="O" and btn2["text"]=="O" and btn3["text"]=="O" 
     or btn4["text"]=="O" and btn5["text"]=="O" and btn6["text"]=="O"
@@ -43,21 +55,23 @@ def checkWinner():
     or btn1["text"]=="O" and btn5["text"]=="O" and btn9["text"]=="O"
     or btn3["text"]=="O" and btn5["text"]=="O" and btn7["text"]=="O"):
         winner=True
+        disButtons()
         messagebox.showinfo("TicTacToe", "O is winner!")
     elif count==9:
         messagebox.showinfo("TicTacToe", "No one has won!")
+        disButtons()
 
 
 
-btn1=Button(mW, text="", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn1)) 
-btn2=Button(mW, text="", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn2))
-btn3=Button(mW, text="", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn3))
-btn4=Button(mW, text="", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn4))
-btn5=Button(mW, text="", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn5))
-btn6=Button(mW, text="", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn6))
-btn7=Button(mW, text="", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn7))
-btn8=Button(mW, text="", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn8))
-btn9=Button(mW, text="", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn9))
+btn1=Button(mW, text="", bg="white", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn1)) 
+btn2=Button(mW, text="", bg="white", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn2))
+btn3=Button(mW, text="", bg="white", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn3))
+btn4=Button(mW, text="", bg="white", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn4))
+btn5=Button(mW, text="", bg="white", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn5))
+btn6=Button(mW, text="", bg="white", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn6))
+btn7=Button(mW, text="", bg="white", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn7))
+btn8=Button(mW, text="", bg="white", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn8))
+btn9=Button(mW, text="", bg="white", fg="red", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn9))
 
 btn1.grid(row=0, column=0)
 btn2.grid(row=0, column=1)
