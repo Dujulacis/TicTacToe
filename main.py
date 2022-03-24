@@ -1,7 +1,8 @@
 from cgitb import strong
 from tabnanny import check
 from tkinter import*
-from tkinter import messagebox #messages
+from tkinter import messagebox
+from tkinter.font import BOLD #messages
 mW=Tk()
 mW.title("TicTacToe")
 speletajsX=True
@@ -9,13 +10,26 @@ speletajsXX=0
 speletajsOO=0
 count=0
 
+class HoverButton(Button):
+    def __init__(self, master, **kw):
+        Button.__init__(self,master=master,**kw)
+        self.defaultBackground = self["background"]
+        self.bind("<Enter>", self.on_enter)
+        self.bind("<Leave>", self.on_leave)
+
+    def on_enter(self, e):
+        self['background'] = self['activebackground']
+
+    def on_leave(self, e):
+        self['background'] = self.defaultBackground
+
 def infoLogs():
     newWindow=Toplevel()
     newWindow.title('About the game')
     newWindow.geometry("300x300")
-    title=Label(newWindow, text="TIC TAC TOE", font=(23))
-    desc=Label(newWindow, text="The game is played on a grid thats 3 squares by 3 squares. You are X, your friend is O. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner. If someone wins, the players change sides. When all 9 squares are full, the game is over. ", wraplength=300, justify="left", font=(18))
-    credits=Label(newWindow, text="Made by duja", font=(16), )
+    title=Label(newWindow, text="TIC TAC TOE", font=("Helvetica 18 bold", 23))
+    desc=Label(newWindow, text="The game is played on a grid thats 3 squares by 3 squares. You are X, your friend is O. The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner. If someone wins, the players change sides. When all 9 squares are full, the game is over. ", wraplength=300, justify="left", font=(18))
+    credits=Label(newWindow, text="Made by duja", font=(16))
     title.grid(row=0, column=0)
     desc.grid(row=1,column=0)
     credits.grid(row=2, column=0)
@@ -122,16 +136,15 @@ def checkWinner():
         else:
             return 0
 
-
-btn1=Button(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn1)) 
-btn2=Button(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn2))
-btn3=Button(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn3))
-btn4=Button(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn4))
-btn5=Button(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn5))
-btn6=Button(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn6))
-btn7=Button(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn7))
-btn8=Button(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn8))
-btn9=Button(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn9))
+btn1=HoverButton(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn1)) 
+btn2=HoverButton(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn2))
+btn3=HoverButton(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn3))
+btn4=HoverButton(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn4))
+btn5=HoverButton(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn5))
+btn6=HoverButton(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn6))
+btn7=HoverButton(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn7))
+btn8=HoverButton(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn8))
+btn9=HoverButton(mW, text="", bg="white", fg="black", width=5, height=2, font=("Verdana", 24), command=lambda: btnClick(btn9))
 
 btn1.grid(row=0, column=0)
 btn2.grid(row=0, column=1)
